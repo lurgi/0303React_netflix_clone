@@ -81,20 +81,6 @@ const Input = styled(motion.input)`
   color: white;
 `;
 
-const ErrorDiv = styled.div`
-  position: absolute;
-  right: 0;
-  top: 40px;
-  padding: 5px;
-  border: 1px solid white;
-  border-radius: 10px;
-  width: 190px;
-  text-align: center;
-  font-weight: 500;
-  color: white;
-  background-color: black;
-`;
-
 const logoVari = {
   initial: {
     fillOpacity: 1,
@@ -129,10 +115,8 @@ function Header() {
   const onSearchClick = () => {
     setSearchClick((prev) => !prev);
   };
-  const { register, watch, handleSubmit, setValue, formState } =
-    useForm<IFormData>();
+  const { register, watch, handleSubmit, setValue } = useForm<IFormData>();
   const navigate = useNavigate();
-  console.log(formState.errors);
   const onValid = () => {
     if (watch().search !== undefined) {
       navigate(`/Search/${watch().search}`);
