@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "./Components/Header";
+import Home from "./Routes/Home";
+import Search from "./Routes/Search";
+import Tv from "./Routes/Tv";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header></Header>
+      <Routes>
+        <Route path={`${process.env.PUBLIC_URL}/>`} element={<Home />}>
+          <Route
+            path={`${process.env.PUBLIC_URL}/movie/:id`}
+            element={<Home />}
+          ></Route>
+        </Route>
+
+        <Route path={`${process.env.PUBLIC_URL}/tv`} element={<Tv />}>
+          <Route
+            path={`${process.env.PUBLIC_URL}/tv/:id`}
+            element={<Tv />}
+          ></Route>
+        </Route>
+
+        <Route
+          path={`${process.env.PUBLIC_URL}/Search/:id`}
+          element={<Search />}
+        ></Route>
+      </Routes>
+    </Router>
   );
 }
 
